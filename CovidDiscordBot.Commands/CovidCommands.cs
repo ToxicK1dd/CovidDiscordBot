@@ -9,11 +9,14 @@ using System;
 
 namespace CovidDiscordBot.Commands
 {
+    /// <summary>
+    /// Contains commands for getting Covid-19 stats.
+    /// </summary>
     public class CovidCommands : CommandBase
     {
-        #region GetCovidInfoAsync - covid
-        [Command("covid"), Description("Returns Covid-19 data from a specified country."), Aliases("virus", "corona", "covid19", "covid-19"), Cooldown(1, 5, CooldownBucketType.User)]
-        public virtual async Task GetCovidInfoAsync(CommandContext ctx, string country)
+        #region GetCountryDataAsync - country
+        [Command("country"), Description("Returns Covid-19 data from a specified country."), Cooldown(1, 5, CooldownBucketType.User)]
+        public virtual async Task GetCountryDataAsync(CommandContext ctx, string country)
         {
             try
             {
@@ -71,6 +74,75 @@ namespace CovidDiscordBot.Commands
 
                 embed.AddField("Active", $"{countryData.Active:N0}", true);
                 embed.AddField("Active per million", $"{countryData.ActivePerOneMillion:N0}", true);
+                embed.AddField("_ _", $"_ _", true);
+
+                await ctx.RespondAsync(embed: embed);
+            }
+            catch(Exception ex)
+            {
+                // Handle exception.
+                await HandleExceptionAsync(ctx, ex);
+
+                // Rethrow for use elsewhere.
+                throw;
+            }
+        }
+        #endregion
+
+        #region GetGlobalDataAsync - global
+        [Command("global"), Description("Returns global Covid-19 data ."), Cooldown(1, 5, CooldownBucketType.User)]
+        public virtual async Task GetGlobalDataAsync(CommandContext ctx)
+        {
+            try
+            {
+                // Trigger typing.
+                await ctx.TriggerTypingAsync();
+
+                // Create service, and get data.
+                CovidService service = new();
+                Global globalData = await service.GetGlobalAsync();
+
+                // Convert timestamp from countryData to a datatime.
+                DateTime updated = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(Math.Round(globalData.Updated / 1000d)).ToLocalTime();
+
+                // Set the format of the embed footer text.
+                string format = ((updated.Year + updated.Month + updated.Day) == (DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day)) ? "Today at" : $"{updated:MM/dd}";
+
+                // Create new embed.
+                DiscordEmbedBuilder embed = new()
+                {
+                    Title = $"COVID-19: Global Stats",
+                    Description = $"**Population:** {globalData.Population:N0}",
+                    Footer = new()
+                    {
+                        Text = $"Last update: {format} {updated:HH:mm} | Requested by {ctx.Message.Author.Username}#{ctx.Message.Author.Discriminator}",
+                    },
+                    Color = DiscordColor.Green,
+                };
+
+                // Add fields to embed.
+                embed.AddField("Cases", $"{globalData.Cases:N0}", true);
+                embed.AddField("Cases Today", $"{globalData.TodayCases:N0}", true);
+                embed.AddField("Cases per million:", $"{globalData.CasesPerOneMillion:N0}", true);
+
+                embed.AddField("Recovered", $"{globalData.Recovered:N0}", true);
+                embed.AddField("Recovered Today", $"{globalData.TodayRecovered:N0}", true);
+                embed.AddField("Recovered per million", $"{globalData.RecoveredPerOneMillion}", true);
+
+                embed.AddField("Deaths", $"{globalData.Deaths:N0}", true);
+                embed.AddField("Deaths Today", $"{globalData.TodayDeaths:N0}", true);
+                embed.AddField("Deaths per million", $"{globalData.DeathsPerOneMillion:N0}", true);
+
+                embed.AddField("Tests", $"{globalData.Tests:N0}", true);
+                embed.AddField("Tests per million", $"{globalData.TestsPerOneMillion:N0}", true);
+                embed.AddField("_ _", $"_ _", true);
+
+                embed.AddField("Critical", $"{globalData.Critical:N0}", true);
+                embed.AddField("Critical per million", $"{globalData.CriticalPerOneMillion:N0}", true);
+                embed.AddField("_ _", $"_ _", true);
+
+                embed.AddField("Active", $"{globalData.Active:N0}", true);
+                embed.AddField("Active per million", $"{globalData.ActivePerOneMillion:N0}", true);
                 embed.AddField("_ _", $"_ _", true);
 
                 await ctx.RespondAsync(embed: embed);

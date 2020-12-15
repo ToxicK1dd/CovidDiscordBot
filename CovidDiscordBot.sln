@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovidDiscordBot.ConsoleApp", "CovidDiscordBot.ConsoleApp\CovidDiscordBot.ConsoleApp.csproj", "{7B2A1AE9-80A9-45E7-9E1F-4FF7DA8C3218}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovidDiscordBot.ConsoleApp", "CovidDiscordBot.ConsoleApp\CovidDiscordBot.ConsoleApp.csproj", "{7B2A1AE9-80A9-45E7-9E1F-4FF7DA8C3218}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovidDiscordBot.Entities", "CovidDiscordBot.Entities\CovidDiscordBot.Entities.csproj", "{936D46A0-8670-4CC7-B914-C22AE158FCE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovidDiscordBot.Entities", "CovidDiscordBot.Entities\CovidDiscordBot.Entities.csproj", "{936D46A0-8670-4CC7-B914-C22AE158FCE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovidDiscordBot.WebServices", "CovidDiscordBot.WebServices\CovidDiscordBot.WebServices.csproj", "{EF58B6A1-1977-4D67-8CE1-2CD1F23037A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovidDiscordBot.WebServices", "CovidDiscordBot.WebServices\CovidDiscordBot.WebServices.csproj", "{EF58B6A1-1977-4D67-8CE1-2CD1F23037A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovidDiscordBot.Commands", "CovidDiscordBot.Commands\CovidDiscordBot.Commands.csproj", "{CB03081E-0F0F-4D7E-A42D-BDC5F641CB56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovidDiscordBot.Commands", "CovidDiscordBot.Commands\CovidDiscordBot.Commands.csproj", "{CB03081E-0F0F-4D7E-A42D-BDC5F641CB56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovidDiscordBot.XUnitTests", "CovidDiscordBot.XUnitTests\CovidDiscordBot.XUnitTests.csproj", "{94A4738E-3C0F-4D6C-9B11-BF18CE28DF2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CB03081E-0F0F-4D7E-A42D-BDC5F641CB56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB03081E-0F0F-4D7E-A42D-BDC5F641CB56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB03081E-0F0F-4D7E-A42D-BDC5F641CB56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94A4738E-3C0F-4D6C-9B11-BF18CE28DF2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94A4738E-3C0F-4D6C-9B11-BF18CE28DF2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94A4738E-3C0F-4D6C-9B11-BF18CE28DF2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94A4738E-3C0F-4D6C-9B11-BF18CE28DF2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
