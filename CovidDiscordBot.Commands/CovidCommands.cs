@@ -66,15 +66,15 @@ namespace CovidDiscordBot.Commands
 
                 embed.AddField("Tests", $"{countryData.Tests:N0}", true);
                 embed.AddField("Tests per million", $"{countryData.TestsPerOneMillion:N0}", true);
-                embed.AddField("_ _", $"_ _", true);
+                embed.AddField("_ _", "_ _", true);
 
                 embed.AddField("Critical", $"{countryData.Critical:N0}", true);
                 embed.AddField("Critical per million", $"{countryData.CriticalPerOneMillion:N0}", true);
-                embed.AddField("_ _", $"_ _", true);
+                embed.AddField("_ _", "_ _", true);
 
                 embed.AddField("Active", $"{countryData.Active:N0}", true);
                 embed.AddField("Active per million", $"{countryData.ActivePerOneMillion:N0}", true);
-                embed.AddField("_ _", $"_ _", true);
+                embed.AddField("_ _", "_ _", true);
 
                 await ctx.RespondAsync(embed: embed);
             }
@@ -111,7 +111,7 @@ namespace CovidDiscordBot.Commands
                 // Create new embed.
                 DiscordEmbedBuilder embed = new()
                 {
-                    Title = $"COVID-19: Global Stats",
+                    Title = "COVID-19: Global Stats",
                     Description = $"**Population:** {globalData.Population:N0}",
                     Footer = new()
                     {
@@ -135,15 +135,15 @@ namespace CovidDiscordBot.Commands
 
                 embed.AddField("Tests", $"{globalData.Tests:N0}", true);
                 embed.AddField("Tests per million", $"{globalData.TestsPerOneMillion:N0}", true);
-                embed.AddField("_ _", $"_ _", true);
+                embed.AddField("_ _", "_ _", true);
 
                 embed.AddField("Critical", $"{globalData.Critical:N0}", true);
                 embed.AddField("Critical per million", $"{globalData.CriticalPerOneMillion:N0}", true);
-                embed.AddField("_ _", $"_ _", true);
+                embed.AddField("_ _", "_ _", true);
 
                 embed.AddField("Active", $"{globalData.Active:N0}", true);
                 embed.AddField("Active per million", $"{globalData.ActivePerOneMillion:N0}", true);
-                embed.AddField("_ _", $"_ _", true);
+                embed.AddField("_ _", "_ _", true);
 
                 await ctx.RespondAsync(embed: embed);
             }
