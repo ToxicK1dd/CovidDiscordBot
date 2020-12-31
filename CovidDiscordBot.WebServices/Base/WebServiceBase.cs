@@ -6,22 +6,22 @@ using System;
 namespace CovidDiscordBot.WebServices.Base
 {
     /// <summary>
-    /// Implements the <see cref="CallWebApiAsync(string)"/> method for use in concreate classes.
+    /// Implements the <see cref="CallWebApiAsync(string)"/> method for use in a concreate WebService class.
     /// </summary>
     public abstract class WebServiceBase
     {
         #region CallWebApiAsync
         /// <summary>
-        /// Calls a given endpoint and returns a string with the retrieved json data
+        /// Calls a given endpoint, and returns a string with the retrieved data..
         /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        protected virtual async Task<string> CallWebApiAsync(string url)
+        /// <param name="endpoint"></param>
+        /// <returns>A string of JSON, hopefully.</returns>
+        protected virtual async Task<string> CallWebApiAsync(string endpoint)
         {
             try
             {
                 // Create a HttpWebRequest.
-                HttpWebRequest httpWebRequest = WebRequest.CreateHttp(url);
+                HttpWebRequest httpWebRequest = WebRequest.CreateHttp(endpoint);
                 // Set method to get.
                 httpWebRequest.Method = WebRequestMethods.Http.Get;
                 // Set accept headers.
@@ -35,15 +35,18 @@ namespace CovidDiscordBot.WebServices.Base
                 {
                     // Read the response.
                     using StreamReader sr = new StreamReader(response.GetResponseStream());
+
                     // Assign the response data to the result variable.
                     result = await sr.ReadToEndAsync();
                 };
 
-                // Return the retrieved JSON data.
+                // Return the retrieved data.
                 return result;
             }
             catch(Exception)
             {
+                // Something, somewhere.
+                // "Should" handle this.
                 throw;
             }
         }
