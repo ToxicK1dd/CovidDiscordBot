@@ -46,7 +46,7 @@ namespace CovidDiscordBot.ConsoleApp.Discord
             }
             catch(Exception ex)
             {
-                if(client != null)
+                if(client is not null)
                 {
                     // Log error message.
                     client.Logger.Log(LogLevel.Error, new EventId(101, "Startup"), ex.Message);

@@ -59,7 +59,7 @@ namespace CovidDiscordBot.ConsoleApp.Discord
         {
             try
             {
-                if(e.Command != null)
+                if(e.Command is not null)
                 {
                     // Log error message.
                     extension.Client.Logger.Log(
@@ -98,12 +98,11 @@ namespace CovidDiscordBot.ConsoleApp.Discord
         public static async Task UpdateActivity(DiscordClient client)
         {
             // Create activity object
-            DiscordActivity discordActivity = new DiscordActivity()
+            DiscordActivity activity = new DiscordActivity()
             {
                 ActivityType = ActivityType.Watching,
                 Name = BotConfig.Status
             };
-            DiscordActivity activity = discordActivity;
 
             // Update activity
             await client.UpdateStatusAsync(activity);
