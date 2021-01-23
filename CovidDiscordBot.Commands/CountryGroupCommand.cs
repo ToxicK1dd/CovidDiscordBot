@@ -42,7 +42,7 @@ namespace CovidDiscordBot.Commands
                 // Create new embed.
                 DiscordEmbedBuilder embed = new()
                 {
-                    Title = $"COVID-19: Stats for {countryData.Name} today",
+                    Title = $"COVID-19: Stats from today for {countryData.Name}",
                     Description = $"**Continent:** {countryData.Continent}\n**Population:** {countryData.Population:N0}",
                     Thumbnail = new()
                     {
