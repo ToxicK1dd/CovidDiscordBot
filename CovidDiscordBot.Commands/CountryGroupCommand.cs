@@ -42,7 +42,7 @@ namespace CovidDiscordBot.Commands
                 // Create new embed.
                 DiscordEmbedBuilder embed = new()
                 {
-                    Title = $"COVID-19: Stats for {countryData.Name}",
+                    Title = $"COVID-19: Stats for {countryData.Name} today",
                     Description = $"**Continent:** {countryData.Continent}\n**Population:** {countryData.Population:N0}",
                     Thumbnail = new()
                     {
@@ -58,28 +58,29 @@ namespace CovidDiscordBot.Commands
                     Color = DiscordColor.Green,
                 };
 
+
                 // Add fields to embed.
-                embed.AddField("Cases", $"{countryData.Cases:N0}", true);
-                embed.AddField("Cases Today", $"{countryData.TodayCases:N0}", true);
+                embed.AddField("Daily Cases", $"{countryData.Cases:N0}", true);
+                embed.AddField("Total Cases", $"{countryData.TodayCases:N0}", true);
                 embed.AddField("Cases per million:", $"{countryData.CasesPerOneMillion:N0}", true);
 
-                embed.AddField("Recovered", $"{countryData.Recovered:N0}", true);
-                embed.AddField("Recovered Today", $"{countryData.TodayRecovered:N0}", true);
+                embed.AddField("Daily Recovered", $"{countryData.Recovered:N0}", true);
+                embed.AddField("Total Recovered", $"{countryData.TodayRecovered:N0}", true);
                 embed.AddField("Recovered per million", $"{countryData.RecoveredPerOneMillion}", true);
 
-                embed.AddField("Deaths", $"{countryData.Deaths:N0}", true);
-                embed.AddField("Deaths Today", $"{countryData.TodayDeaths:N0}", true);
+                embed.AddField("Daily Deaths", $"{countryData.Deaths:N0}", true);
+                embed.AddField("Total Deaths", $"{countryData.TodayDeaths:N0}", true);
                 embed.AddField("Deaths per million", $"{countryData.DeathsPerOneMillion:N0}", true);
 
-                embed.AddField("Tests", $"{countryData.Tests:N0}", true);
+                embed.AddField("Total Tests", $"{countryData.Tests:N0}", true);
                 embed.AddField("Tests per million", $"{countryData.TestsPerOneMillion:N0}", true);
                 embed.AddField("_ _", "_ _", true);
 
-                embed.AddField("Critical", $"{countryData.Critical:N0}", true);
+                embed.AddField("Total Critical", $"{countryData.Critical:N0}", true);
                 embed.AddField("Critical per million", $"{countryData.CriticalPerOneMillion:N0}", true);
                 embed.AddField("_ _", "_ _", true);
 
-                embed.AddField("Active", $"{countryData.Active:N0}", true);
+                embed.AddField("Total Active", $"{countryData.Active:N0}", true);
                 embed.AddField("Active per million", $"{countryData.ActivePerOneMillion:N0}", true);
                 embed.AddField("_ _", "_ _", true);
 
@@ -122,7 +123,7 @@ namespace CovidDiscordBot.Commands
                 // Create new embed.
                 DiscordEmbedBuilder embed = new()
                 {
-                    Title = $"COVID-19: Stats for {countryData.Name}",
+                    Title = $"COVID-19: Stats from yesterday for {countryData.Name}",
                     Description = $"**Continent:** {countryData.Continent}\n**Population:** {countryData.Population:N0}",
                     Thumbnail = new()
                     {
@@ -139,27 +140,27 @@ namespace CovidDiscordBot.Commands
                 };
 
                 // Add fields to embed.
-                embed.AddField("Cases", $"{countryData.Cases:N0}", true);
-                embed.AddField("Cases Yesterday", $"{countryData.TodayCases:N0}", true);
+                embed.AddField("Daily Cases", $"{countryData.Cases:N0}", true);
+                embed.AddField("Total Cases", $"{countryData.TodayCases:N0}", true);
                 embed.AddField("Cases per million:", $"{countryData.CasesPerOneMillion:N0}", true);
 
-                embed.AddField("Recovered", $"{countryData.Recovered:N0}", true);
-                embed.AddField("Recovered Yesterday", $"{countryData.TodayRecovered:N0}", true);
+                embed.AddField("Daily Recovered", $"{countryData.Recovered:N0}", true);
+                embed.AddField("Total Recovered", $"{countryData.TodayRecovered:N0}", true);
                 embed.AddField("Recovered per million", $"{countryData.RecoveredPerOneMillion}", true);
 
-                embed.AddField("Deaths", $"{countryData.Deaths:N0}", true);
-                embed.AddField("Deaths Yesterday", $"{countryData.TodayDeaths:N0}", true);
+                embed.AddField("Daily Deaths", $"{countryData.Deaths:N0}", true);
+                embed.AddField("Total Deaths", $"{countryData.TodayDeaths:N0}", true);
                 embed.AddField("Deaths per million", $"{countryData.DeathsPerOneMillion:N0}", true);
 
-                embed.AddField("Tests", $"{countryData.Tests:N0}", true);
+                embed.AddField("Total Tests", $"{countryData.Tests:N0}", true);
                 embed.AddField("Tests per million", $"{countryData.TestsPerOneMillion:N0}", true);
                 embed.AddField("_ _", "_ _", true);
 
-                embed.AddField("Critical", $"{countryData.Critical:N0}", true);
+                embed.AddField("Total Critical", $"{countryData.Critical:N0}", true);
                 embed.AddField("Critical per million", $"{countryData.CriticalPerOneMillion:N0}", true);
                 embed.AddField("_ _", "_ _", true);
 
-                embed.AddField("Active", $"{countryData.Active:N0}", true);
+                embed.AddField("Total Active", $"{countryData.Active:N0}", true);
                 embed.AddField("Active per million", $"{countryData.ActivePerOneMillion:N0}", true);
                 embed.AddField("_ _", "_ _", true);
 
@@ -202,7 +203,7 @@ namespace CovidDiscordBot.Commands
                 // Create new embed.
                 DiscordEmbedBuilder embed = new()
                 {
-                    Title = $"COVID-19: Stats for {countryData.Name}",
+                    Title = $"COVID-19: Stats from two days ago for {countryData.Name}",
                     Description = $"**Continent:** {countryData.Continent}\n**Population:** {countryData.Population:N0}",
                     Thumbnail = new()
                     {
@@ -219,27 +220,27 @@ namespace CovidDiscordBot.Commands
                 };
 
                 // Add fields to embed.
-                embed.AddField("Cases", $"{countryData.Cases:N0}", true);
-                embed.AddField("Cases Yesterday", $"{countryData.TodayCases:N0}", true);
+                embed.AddField("Daily Cases", $"{countryData.Cases:N0}", true);
+                embed.AddField("Total Cases", $"{countryData.TodayCases:N0}", true);
                 embed.AddField("Cases per million:", $"{countryData.CasesPerOneMillion:N0}", true);
 
-                embed.AddField("Recovered", $"{countryData.Recovered:N0}", true);
-                embed.AddField("Recovered Yesterday", $"{countryData.TodayRecovered:N0}", true);
+                embed.AddField("Daily Recovered", $"{countryData.Recovered:N0}", true);
+                embed.AddField("Total Recovered", $"{countryData.TodayRecovered:N0}", true);
                 embed.AddField("Recovered per million", $"{countryData.RecoveredPerOneMillion}", true);
 
-                embed.AddField("Deaths", $"{countryData.Deaths:N0}", true);
-                embed.AddField("Deaths Yesterday", $"{countryData.TodayDeaths:N0}", true);
+                embed.AddField("Daily Deaths", $"{countryData.Deaths:N0}", true);
+                embed.AddField("Total Deaths", $"{countryData.TodayDeaths:N0}", true);
                 embed.AddField("Deaths per million", $"{countryData.DeathsPerOneMillion:N0}", true);
 
-                embed.AddField("Tests", $"{countryData.Tests:N0}", true);
+                embed.AddField("Total Tests", $"{countryData.Tests:N0}", true);
                 embed.AddField("Tests per million", $"{countryData.TestsPerOneMillion:N0}", true);
                 embed.AddField("_ _", "_ _", true);
 
-                embed.AddField("Critical", $"{countryData.Critical:N0}", true);
+                embed.AddField("Total Critical", $"{countryData.Critical:N0}", true);
                 embed.AddField("Critical per million", $"{countryData.CriticalPerOneMillion:N0}", true);
                 embed.AddField("_ _", "_ _", true);
 
-                embed.AddField("Active", $"{countryData.Active:N0}", true);
+                embed.AddField("Total Active", $"{countryData.Active:N0}", true);
                 embed.AddField("Active per million", $"{countryData.ActivePerOneMillion:N0}", true);
                 embed.AddField("_ _", "_ _", true);
 
