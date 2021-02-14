@@ -7,6 +7,7 @@ using DSharpPlus.Entities;
 using System.Threading.Tasks;
 using System;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace CovidDiscordBot.Commands
 {
@@ -33,17 +34,16 @@ namespace CovidDiscordBot.Commands
                 CovidService service = new();
                 Global globalData = await service.GetGlobalAsync();
 
-                // Convert timestamp from countryData to a datatime.
-                DateTime updated = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(Math.Round(globalData.Updated / 1000d)).ToLocalTime();
-
-                // Set the format of the embed footer text.
-                string format = ((updated.Year + updated.Month + updated.Day) == (DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day)) ? "Today at" : $"{updated:MM/dd}";
+                // Get date
+                DateTime updated = DateTimeOffset.FromUnixTimeMilliseconds(Convert.ToInt64(globalData.Updated)).DateTime;
+                // Format date
+                string format = updated.ToString("H:mm 'on 'dddd dd.", CultureInfo.CreateSpecificCulture("en"));
 
                 // Create new embed.
                 DiscordEmbedBuilder embed = new()
                 {
                     Title = "COVID-19: Global Stats",
-                    Description = $"**Population:** {globalData.Population:N0}",
+                    Description = $"**Population:** {globalData.Population:N0}\n**Updated:** {format}",
                     Footer = new()
                     {
                         IconUrl = ctx.Message.Author.AvatarUrl,

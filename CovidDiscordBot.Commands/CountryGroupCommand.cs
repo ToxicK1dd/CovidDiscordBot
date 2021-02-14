@@ -7,6 +7,7 @@ using DSharpPlus.Entities;
 using System.Threading.Tasks;
 using System;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace CovidDiscordBot.Commands
 {
@@ -33,17 +34,16 @@ namespace CovidDiscordBot.Commands
                 CovidService service = new();
                 Country countryData = await service.GetByCountryAsync(country);
 
-                // Convert timestamp from countryData to a datatime.
-                DateTime updated = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(Math.Round(countryData.Updated / 1000d)).ToLocalTime();
-
-                // Set the format of the embed footer text.
-                string format = ((updated.Year + updated.Month + updated.Day) == (DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day)) ? "Today at" : $"{updated:MM/dd}";
+                // Get date
+                DateTime updated = DateTimeOffset.FromUnixTimeMilliseconds(Convert.ToInt64(countryData.Updated)).DateTime;
+                // Format date
+                string format = updated.ToString("H:mm 'on 'dddd dd.", CultureInfo.CreateSpecificCulture("en"));
 
                 // Create new embed.
                 DiscordEmbedBuilder embed = new()
                 {
                     Title = $"COVID-19: Stats from today for {countryData.Name}",
-                    Description = $"**Continent:** {countryData.Continent}\n**Population:** {countryData.Population:N0}",
+                    Description = $"**Population:** {countryData.Population:N0}\n**Continent:** {countryData.Continent}\n**Updated:** {format}",
                     Thumbnail = new()
                     {
                         Height = 20,
@@ -114,17 +114,16 @@ namespace CovidDiscordBot.Commands
                 CovidService service = new();
                 Country countryData = await service.GetByCountryYesterdayAsync(country);
 
-                // Convert timestamp from countryData to a datatime.
-                DateTime updated = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(Math.Round(countryData.Updated / 1000d)).ToLocalTime();
-
-                // Set the format of the embed footer text.
-                string format = ((updated.Year + updated.Month + updated.Day) == (DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day)) ? "Today at" : $"{updated:MM/dd}";
+                // Get date
+                DateTime updated = DateTimeOffset.FromUnixTimeMilliseconds(Convert.ToInt64(countryData.Updated)).DateTime;
+                // Format date
+                string format = updated.ToString("H:mm 'on 'dddd dd.", CultureInfo.CreateSpecificCulture("en"));
 
                 // Create new embed.
                 DiscordEmbedBuilder embed = new()
                 {
                     Title = $"COVID-19: Stats from yesterday for {countryData.Name}",
-                    Description = $"**Continent:** {countryData.Continent}\n**Population:** {countryData.Population:N0}",
+                    Description = $"**Population:** {countryData.Population:N0}\n**Continent:** {countryData.Continent}\n**Updated:** {format}",
                     Thumbnail = new()
                     {
                         Height = 20,
@@ -194,17 +193,16 @@ namespace CovidDiscordBot.Commands
                 CovidService service = new();
                 Country countryData = await service.GetByCountryTwoDaysAsync(country);
 
-                // Convert timestamp from countryData to a datatime.
-                DateTime updated = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(Math.Round(countryData.Updated / 1000d)).ToLocalTime();
-
-                // Set the format of the embed footer text.
-                string format = ((updated.Year + updated.Month + updated.Day) == (DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day)) ? "Today at" : $"{updated:MM/dd}";
+                // Get date
+                DateTime updated = DateTimeOffset.FromUnixTimeMilliseconds(Convert.ToInt64(countryData.Updated)).DateTime;
+                // Format date
+                string format = updated.ToString("H:mm 'on 'dddd dd.", CultureInfo.CreateSpecificCulture("en"));
 
                 // Create new embed.
                 DiscordEmbedBuilder embed = new()
                 {
                     Title = $"COVID-19: Stats from two days ago for {countryData.Name}",
-                    Description = $"**Continent:** {countryData.Continent}\n**Population:** {countryData.Population:N0}",
+                    Description = $"**Population:** {countryData.Population:N0}\n**Continent:** {countryData.Continent}\n**Updated:** {format}",
                     Thumbnail = new()
                     {
                         Height = 20,
