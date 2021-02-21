@@ -37,7 +37,7 @@ namespace CovidDiscordBot.Commands
                 // Get date
                 DateTime updated = DateTimeOffset.FromUnixTimeMilliseconds(Convert.ToInt64(globalData.Updated)).DateTime;
                 // Format date
-                string format = updated.ToString("H:mm 'on 'dddd dd.", CultureInfo.CreateSpecificCulture("en"));
+                string format = updated.ToString("H:mm', 'dddd dd.", CultureInfo.CreateSpecificCulture("en"));
 
                 // Create new embed.
                 DiscordEmbedBuilder embed = new()
