@@ -4,10 +4,10 @@ using CovidDiscordBot.WebServices;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.Entities;
-using System.Threading.Tasks;
-using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Threading.Tasks;
+using System;
 
 namespace CovidDiscordBot.Commands
 {
